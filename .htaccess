@@ -1,0 +1,9 @@
+#ce fichier redirige toute les requêtes vers index.php avec ce qu'il y a après l'url de base dans une variable $page
+#par exemple 'localhost/MVC2/film' devient en réalité 'localhost/MVC2/index.php?page=film'
+#toutes les requêtes passent donc par le routeur : index.php qui se charge d'appeler le bon controlleur.
+
+RewriteEngine on
+RewriteBase /MVC2/
+RewriteCond  %{REQUEST_FILENAME} !-f
+RewriteCond  %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?page=$1 [NC,L,QSA]
